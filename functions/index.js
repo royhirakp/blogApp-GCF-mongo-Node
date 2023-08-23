@@ -117,6 +117,7 @@ exports.blog = functions.https.onRequest(async (req, res) => {
         res.status(405).send("Method Not Allowed");
     }
   } catch (error) {
+    // handel database error
     //try  more testcase for error handel**
     if (error.name === "CastError") {
       return res.status(404).json({ msg: "indalid Id", error });

@@ -20,44 +20,48 @@ Methods :
    Example url for search by id : “/blogs?id=<id>”
    Example url for search by author: “/blogs?author=<author>”
 
-response syntax: {
-"status": 1,
-"total": <total_number_of_blogs>,
-“pageNo”: <page No>
-"data":[<all blogs >]
-}
+   response syntax: {
+   "status": 1,
+   "total": <total_number_of_blogs>,
+   “pageNo”: <page No>
+   "data":[<all blogs >]
+   }
 
-2.PUT
-url: "/blog?id=<blog_id>"
-request body : {
-"content": "<new_blog_content>"
-}
+2. PUT
 
-response :
-Status: 204 No Content (on successful update)
-Status: 400 Bad Request (if request body is empty)
-Status: 404 Not Found (if no blog post with the given id is found)
+   url: "/blog?id=<blog_id>"
+   request body : {
+   "content": "<new_blog_content>"
+   }
 
-3.DELETE
-url: "/blog?id=<blog_id>"
-Response : Status: 204 No Content (on successful deletion)
-Status: 404 Not Found (if no blog post with the given id is found)
+   response :
+   Status: 204 No Content (on successful update)
+   Status: 400 Bad Request (if request body is empty)
+   Status: 404 Not Found (if no blog post with the given id is found)
 
-4.POST
-url: "/blog"
-Request Body: {
-"title": "<blog_title>",
-"content": "<blog_content>",
-"author": "<blog_author>"
-}
-Response :
-Status: 200 OK (on successful creation)
-Status: 400 Bad Request (if any required field is missing)
-Status: 409 Conflict (if a blog post with the same title already exists)
+3. DELETE
+   url: "/blog?id=<blog_id>"
 
-Error Responses: For all METHODS
-Status: 405 Method Not Allowed
-This response indicates that the request method used is not supported by the API endpoint.
-status: 404 for invalid id
-Status: 500 Internal Server Error
-This response is returned when an unexpected error occurs on the server side.
+   Response : Status: 204 No Content (on successful deletion)
+   Status: 404 Not Found (if no blog post with the given id is found)
+   Status: 404 Not Found (invalid id )
+
+4. POST
+   url: "/blog"
+   Request Body: {
+   "title": "<blog_title>",
+   "content": "<blog_content>",
+   "author": "<blog_author>"
+   }
+
+   Response :
+   Status: 200 OK (on successful creation)
+   Status: 400 Bad Request (if any required field is missing)
+   Status: 409 Conflict (if a blog post with the same title already exists)
+
+   \*\*\*Error Responses: For all METHODS
+   Status: 405 Method Not Allowed
+   This response indicates that the request method used is not supported by the API endpoint.
+   status: 404 for invalid id
+   Status: 500 Internal Server Error
+   This response is returned when an unexpected error occurs on the server side.
